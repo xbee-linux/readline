@@ -1,0 +1,23 @@
+schema-version: 1.0
+
+description: |
+  Le paquet Readline est un ensemble de bibliothèques qui offrent des fonctionnalités d'édition de la ligne de commande et d'historique.
+
+  Bibliothèques installées: libhistory.so et libreadline.so
+  Répertoires installés: /usr/include/readline et /usr/share/doc/readline-8.1
+  
+  libhistory:Fournit une interface utilisateur cohérente pour rappeler des lignes dans l'historique
+  libreadline: Fournit un ensemble de commandes pour manipuler du texte entré dans une session interactive d'un programme
+
+
+
+builder: ./readline-builder
+
+var:
+  version: "8.1"
+
+
+provision:
+  - copy:
+      builder: readline
+      todir: /
