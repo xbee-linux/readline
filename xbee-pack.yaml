@@ -11,25 +11,25 @@ description: |
   libhistory:Fournit une interface utilisateur cohérente pour rappeler des lignes dans l'historique
   libreadline: Fournit un ensemble de commandes pour manipuler du texte entré dans une session interactive d'un programme
 
-in:
+var:
   version: "8.1"
 
 dependency: ncurses
 
 provision:
   - url:
-      from: https://ftp.gnu.org/gnu/readline/readline-{% version %}.tar.gz
-      todir: "{% xbeeSrc %}"
+      from: https://ftp.gnu.org/gnu/readline/readline-{{ .version }}.tar.gz
+      todir: "{{ .xbeeSrc }}"
 
 build:
   - shell:
       cmds:
         - sed -i '/MV.*old/d' Makefile.in
         - sed -i '/{OLDSUFF}/c:' support/shlib-install
-        - ./configure --prefix=/usr --disable-static --with-curses --docdir=/usr/share/doc/readline-{% version %}
+        - ./configure --prefix=/usr --disable-static --with-curses --docdir=/usr/share/doc/readline-{{ .version }}
         - make SHLIB_LIBS="-lncursesw"
-        - make SHLIB_LIBS="-lncursesw" install DESTDIR={% xbeeOut %}
-#        - install -v -m644 doc/*.{ps,pdf,html,dvi} {% exportDir %}/share/doc/readline-{% version %}
-      directory: "{% xbeeSrc %}/readline-{% version %}"
+        - make SHLIB_LIBS="-lncursesw" install DESTDIR={{ .xbeeOut }}
+#        - install -v -m644 doc/*.{ps,pdf,html,dvi} {{ .exportDir }}/share/doc/readline-{{ .version }}
+      directory: "{{ .xbeeSrc }}/readline-{{ .version }}"
 
 
