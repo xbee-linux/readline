@@ -19,7 +19,7 @@ dependency: ncurses
 provision:
   - url:
       from: https://ftp.gnu.org/gnu/readline/readline-{{ .version }}.tar.gz
-      todir: "{{ .xbeeSrc }}"
+      todir: "{{ .xbee.src }}"
 
 build:
   - shell:
@@ -28,8 +28,8 @@ build:
         - sed -i '/{OLDSUFF}/c:' support/shlib-install
         - ./configure --prefix=/usr --disable-static --with-curses --docdir=/usr/share/doc/readline-{{ .version }}
         - make SHLIB_LIBS="-lncursesw"
-        - make SHLIB_LIBS="-lncursesw" install DESTDIR={{ .xbeeOut }}
+        - make SHLIB_LIBS="-lncursesw" install DESTDIR={{ .xbee.out }}
 #        - install -v -m644 doc/*.{ps,pdf,html,dvi} {{ .exportDir }}/share/doc/readline-{{ .version }}
-      directory: "{{ .xbeeSrc }}/readline-{{ .version }}"
+      directory: "{{ .xbee.src }}/readline-{{ .version }}"
 
 
