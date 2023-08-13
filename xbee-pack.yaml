@@ -14,7 +14,7 @@ description: |
 var:
   version: "8.1"
 
-dependency: ncurses
+builder: ncurses
 
 provision:
   - url:
