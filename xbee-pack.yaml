@@ -17,9 +17,7 @@ var:
 builder: ncurses
 
 provision:
-  - url:
-      from: https://ftp.gnu.org/gnu/readline/readline-{{ .version }}.tar.gz
-      todir: "{{ .xbee.src }}"
+  url: https://ftp.gnu.org/gnu/readline/readline-{{ .version }}.tar.gz
 
 build:
   - shell:
