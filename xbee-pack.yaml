@@ -14,7 +14,7 @@ description: |
 var:
   version: "8.1"
 
-builder: ncurses
+dependency: ncurses
 
 provision:
   url: https://ftp.gnu.org/gnu/readline/readline-{{ .version }}.tar.gz
