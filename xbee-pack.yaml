@@ -12,22 +12,23 @@ description: |
   libreadline: Fournit un ensemble de commandes pour manipuler du texte entré dans une session interactive d'un programme
 
 var:
-  version: "8.1"
+  xbee:
+    version: "8.1"
 
 dependency: ncurses
 
 provision:
-  url: https://ftp.gnu.org/gnu/readline/readline-{{ .version }}.tar.gz
+  url: https://ftp.gnu.org/gnu/readline/readline-{{ .xbee.version }}.tar.gz
 
 build:
   - shell:
       cmds:
         - sed -i '/MV.*old/d' Makefile.in
         - sed -i '/{OLDSUFF}/c:' support/shlib-install
-        - ./configure --prefix=/usr --disable-static --with-curses --docdir=/usr/share/doc/readline-{{ .version }}
+        - ./configure --prefix=/usr --disable-static --with-curses --docdir=/usr/share/doc/readline-{{ .xbee.version }}
         - make SHLIB_LIBS="-lncursesw"
         - make SHLIB_LIBS="-lncursesw" install DESTDIR={{ .xbee.out }}
-#        - install -v -m644 doc/*.{ps,pdf,html,dvi} {{ .exportDir }}/share/doc/readline-{{ .version }}
-      directory: "{{ .xbee.src }}/readline-{{ .version }}"
+#        - install -v -m644 doc/*.{ps,pdf,html,dvi} {{ .exportDir }}/share/doc/readline-{{ .xbee.version }}
+      directory: "{{ .xbee.src }}/readline-{{ .xbee.version }}"
 
 
